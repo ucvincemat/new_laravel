@@ -20,6 +20,6 @@
         <br>
         <button type="submit">Create</button>
     </form>
-    <a href="{{ route('tasks.index') }}">Back to Tasks</a>
+    <a href="/tasks">Back to Tasks</a>
 </body>
 </html>

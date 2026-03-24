@@ -7,16 +7,16 @@
 </head>
 <body>
     <h1>Tasks</h1>
-    <a href="{{ route('tasks.create') }}">Create New Task</a>
+    <a href="/tasks/create">Create New Task</a>
     <ul>
         @foreach($tasks as $task)
             <li>
                 <strong>{{ $task->title }}</strong>
                 <p>{{ $task->description }}</p>
                 <p>Completed: {{ $task->is_completed ? 'Yes' : 'No' }}</p>
-                <a href="{{ route('tasks.show', $task) }}">View</a>
-                <a href="{{ route('tasks.edit', $task) }}">Edit</a>
-                <form action="{{ route('tasks.destroy', $task) }}" method="POST" style="display:inline;">
+                <a href="/tasks/{{ $task->id }}">View</a>
+                <a href="/tasks/{{ $task->id }}/edit">Edit</a>
+                <form action="/tasks/{{ $task->id }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Delete</button>
