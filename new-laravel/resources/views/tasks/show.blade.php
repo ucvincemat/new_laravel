@@ -11,7 +11,11 @@
     <p>Completed: {{ $task->is_completed ? 'Yes' : 'No' }}</p>
     <p>Created: {{ $task->created_at }}</p>
     <p>Updated: {{ $task->updated_at }}</p>
-    <a href="{{ route('tasks.edit', $task) }}">Edit</a>
-    <a href="/tasks">Back to Tasks</a>
+    <form action="/tasks/{{ $task->id }}/edit" method="GET" style="display:inline;">
+        <button type="submit">Edit</button>
+    </form>
+    <form action="/tasks" method="GET" style="display:inline;">
+        <button type="submit">Back to Tasks</button>
+    </form>
 </body>
 </html>

@@ -20,6 +20,8 @@
         <br>
         <button type="submit">Create</button>
     </form>
-    <a href="/tasks">Back to Tasks</a>
+    <form action="/tasks" method="GET" style="display:inline;">
+        <button type="submit">Back to Tasks</button>
+    </form>
 </body>
 </html>

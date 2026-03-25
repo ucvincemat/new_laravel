@@ -7,15 +7,21 @@
 </head>
 <body>
     <h1>Tasks</h1>
-    <a href="/tasks/create">Create New Task</a>
+    <form action="/tasks/create" method="GET" style="display:inline;">
+        <button type="submit">Create New Task</button>
+    </form>
     <ul>
         @foreach($tasks as $task)
             <li>
                 <strong>{{ $task->title }}</strong>
                 <p>{{ $task->description }}</p>
                 <p>Completed: {{ $task->is_completed ? 'Yes' : 'No' }}</p>
-                <a href="/tasks/{{ $task->id }}">View</a>
-                <a href="/tasks/{{ $task->id }}/edit">Edit</a>
+                <form action="/tasks/{{ $task->id }}" method="GET" style="display:inline;">
+                    <button type="submit">View</button>
+                </form>
+                <form action="/tasks/{{ $task->id }}/edit" method="GET" style="display:inline;">
+                    <button type="submit">Edit</button>
+                </form>
                 <form action="/tasks/{{ $task->id }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
