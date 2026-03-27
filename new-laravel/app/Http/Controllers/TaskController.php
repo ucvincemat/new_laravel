@@ -29,7 +29,9 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        Task::create($request->all());
+        $data = $request->all();
+        $data['priority'] = $this->mapPriorityValue($data['priority'] ?? '2');
+        Task::create($data);
 
         return redirect()->route('tasks.index');
     }
@@ -55,7 +57,9 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        $task->update($request->all());
+        $data = $request->all();
+        $data['priority'] = $this->mapPriorityValue($data['priority'] ?? '2');
+        $task->update($data);
 
         return redirect()->route('tasks.index');
     }
@@ -68,5 +72,19 @@ class TaskController extends Controller
         $task->delete();
 
         return redirect()->route('tasks.index');
+    }
+
+    /**
+     * Map numeric priority value to string.
+     */
+    private function mapPriorityValue(string $value): string
+    {
+        return match($value) {
+            '1' => 'Low',
+            '2' => 'Normal',
+            '3' => 'High',
+            '4' => 'Urgent',
+            default => 'Normal'
+        };
     }
 }
