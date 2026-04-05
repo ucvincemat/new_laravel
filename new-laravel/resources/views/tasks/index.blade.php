@@ -45,7 +45,7 @@
                         </div>
                     </article>
                 @empty
-                    <p class="rounded-lg bg-slate-800/80 border border-slate-600 p-4 text-cyan-200">No tasks yet. Hit “Create New Task” to start building your list.</p>
+                    <p class="rounded-lg bg-slate-800/80 border border-slate-600 p-4 text-cyan-200">No tasks yet. Hit "Create New Task" to start building your list.</p>
                 @endforelse
             </div>
         </section>
